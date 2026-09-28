@@ -4,6 +4,20 @@
 // Categories: Production (Sports + Events), Operations (Major Events), Creative (Video Work)
 $works = [
     [
+        "link" => "https://www.youtube.com/watch?v=pSIGz3aMu5Y",
+        "image" => "afc-champions-league-elite.jpg",
+        "title" => "AFC Champions League Elite",
+        "position" => "Ceremonies and Infotainment Producer",
+        "category" => "Production"
+    ],
+    [
+        "link" => "https://www.youtube.com/watch?v=M3HrQlwrnLE",
+        "image" => "afc-u23-asian-cup-2026.jpg",
+        "title" => "Asian Football Cup U23",
+        "position" => "Ceremonies and Infotainment Producer",
+        "category" => "Production"
+    ],
+    [
         "link" => "https://www.youtube.com/watch?v=a8qY7rfIdzM",
         "image" => "unwto-ga-2025.jpg",
         "title" => "UNWTO 26th General Assembly 2025",
@@ -194,7 +208,7 @@ $works = [
     ],
     [
         "link" => "https://www.youtube.com/watch?v=F_KW7CzMw6I",
-        "image" => "chess2016.jpg",
+        "image" => "chess-cup-2015.jpg",
         "title" => "Fide Chess Cup Baku 2015",
         "position" => "Executive Producer",
         "category" => "Production"

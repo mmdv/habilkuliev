@@ -108,7 +108,7 @@ include 'portfolio.php';
         <div class="container mx-auto px-6 pt-32 md:pt-40 relative">
             <h1 class="leading-[0.9] tracking-tight font-bold
                  text-[14vw] lg:text-[210px]">
-                To Infinity &<br /> Beyond
+                Show must<br /> go on<sup class="relative align-baseline top-[-1.9em] text-[0.3em] leading-none font-semibold ml-[0.05em]">&copy;</sup>
             </h1>
 
             <a href="#about"
@@ -219,7 +219,7 @@ include 'portfolio.php';
         <div class="container mx-auto px-6 mt-32">
             <div
                 data-aos="fade-up"
-                class="bg-[#DD2F20] rounded-[40px] p-8 md:p-16 min-h-[640px] flex flex-col justify-between overflow-hidden"
+                class="bg-[#F26A21] rounded-[40px] p-8 md:p-16 min-h-[640px] flex flex-col justify-between overflow-hidden"
             >
                 <p class="text-black text-4xl/relaxed md:text-6xl/relaxed lg:text-[64px]/[1.4] font-bold tracking-tight">
                     Simply put, short-term or long-term, I bring the expertise and team support to shape your vision, manage the process, and launch your project successfully
@@ -227,7 +227,7 @@ include 'portfolio.php';
 
                 <div class="relative mt-auto pt-12 pb-4">
                     <div id="ticker-container" class="flex whitespace-nowrap overflow-visible">
-                        <div id="ticker-content" class="flex shrink-0 items-center gap-12 text-3xl md:text-5xl font-bold text-[#6D110F] pb-2">
+                        <div id="ticker-content" class="flex shrink-0 items-center gap-12 text-3xl md:text-5xl font-bold text-[#7A3108] pb-2">
                             <span>Show Caller</span>
                             <span>Concerts</span>
                             <span>Producing</span>
@@ -251,12 +251,9 @@ include 'portfolio.php';
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
             <div class="max-w-xl">
-                <h2 class="text-[40px] md:text-[50px] font-bold leading-tight tracking-tight mb-4 text-black">Projects</h2>
-                <p class="text-black/80 text-lg leading-relaxed font-medium">
-                    As a seasoned creator of contemporary, user-friendly web designs and digital solutions, I aim to assist you in constructing the brand of your fantasies.
-                </p>
+                <h2 class="text-[40px] md:text-[50px] font-bold leading-tight tracking-tight text-black">Projects</h2>
             </div>
         </div>
 
