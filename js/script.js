@@ -6,6 +6,117 @@ document.addEventListener('DOMContentLoaded', () => {
         offset: 100
     });
 
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpen = document.getElementById('menu-open');
+    const menuClose = document.getElementById('menu-close');
+    const menuBackdrop = document.getElementById('menu-backdrop');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    let menuCloseTimer = null;
+
+    function openMenu() {
+        if (!mobileMenu) return;
+        clearTimeout(menuCloseTimer);
+        mobileMenu.classList.remove('hidden');
+        mobileMenu.classList.add('flex');
+        document.body.classList.add('menu-open');
+        // force reflow so the transition runs from the 0.9/opacity-0 base state
+        void mobileMenu.offsetWidth;
+        mobileMenu.classList.add('menu-visible');
+    }
+
+    function closeMenu() {
+        if (!mobileMenu) return;
+        mobileMenu.classList.remove('menu-visible');
+        document.body.classList.remove('menu-open');
+        // wait for the transition to finish before hiding
+        menuCloseTimer = setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }, 250);
+    }
+
+    if (menuOpen) menuOpen.addEventListener('click', openMenu);
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    if (menuBackdrop) menuBackdrop.addEventListener('click', closeMenu);
+    mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Hide header on scroll down, show on scroll up (desktop + mobile)
+    const header = document.getElementById('site-header');
+    let lastScrollY = window.scrollY;
+
+    // Desktop nav scroll-spy
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveNav(id) {
+        navLinks.forEach(link => {
+            const target = link.getAttribute('href').replace('#', '');
+            const isActive = target === id;
+            link.classList.toggle('active', isActive);
+            link.classList.toggle('bg-white', isActive);
+            link.classList.toggle('text-black', isActive);
+            link.classList.toggle('text-gray-300', !isActive);
+        });
+    }
+
+    function currentSection() {
+        const pos = window.scrollY + 150; // offset for the fixed header
+        const about = document.getElementById('about');
+        const projects = document.getElementById('projects');
+        const topOf = el => el.getBoundingClientRect().top + window.scrollY;
+        if (projects && pos >= topOf(projects)) return 'projects';
+        if (about && pos >= topOf(about)) return 'about';
+        return 'top'; // Home
+    }
+
+    function onScroll() {
+        const currentY = window.scrollY;
+        if (currentY > lastScrollY && currentY > 100) {
+            header.classList.add('header-hidden');   // scrolling down
+        } else {
+            header.classList.remove('header-hidden'); // scrolling up
+        }
+        lastScrollY = currentY;
+        setActiveNav(currentSection());
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Immediate feedback on click (scroll-spy will confirm it afterwards)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            setActiveNav(link.getAttribute('href').replace('#', ''));
+        });
+    });
+
+    onScroll(); // set correct state on load
+
+    // About me carousel (infinite)
+    const aboutTrack = document.getElementById('about-track');
+    if (aboutTrack) {
+        const slides = aboutTrack.querySelectorAll('.about-slide');
+        const total = slides.length;
+        let aboutIndex = 0;
+
+        function updateCarousel() {
+            aboutTrack.style.transform = `translateX(-${aboutIndex * 100}%)`;
+        }
+
+        const aboutNext = document.getElementById('about-next');
+        const aboutPrev = document.getElementById('about-prev');
+
+        if (aboutNext) aboutNext.addEventListener('click', () => {
+            aboutIndex = (aboutIndex + 1) % total; // wraps to first after last
+            updateCarousel();
+        });
+
+        if (aboutPrev) aboutPrev.addEventListener('click', () => {
+            aboutIndex = (aboutIndex - 1 + total) % total; // wraps to last before first
+            updateCarousel();
+        });
+    }
+
     const container = document.getElementById('ticker-container');
     const content = document.getElementById('ticker-content');
 

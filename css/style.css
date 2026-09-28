@@ -1,6 +1,49 @@
 /* Custom smooth scrolling */
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+/* Prevent scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Hide scrollbar (e.g. mobile filter tabs) while keeping scroll */
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Keep active nav item readable on hover (white bg, black text) */
+.nav-link.active:hover {
+    color: #000;
+}
+
+/* Header hide-on-scroll */
+#site-header.header-hidden {
+    transform: translateY(-100%);
+}
+
+/* Mobile menu open animation */
+#mobile-menu #menu-backdrop {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+#mobile-menu .menu-panel {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+#mobile-menu.menu-visible #menu-backdrop {
+    opacity: 1;
+}
+#mobile-menu.menu-visible .menu-panel {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Custom transitions for animations */
